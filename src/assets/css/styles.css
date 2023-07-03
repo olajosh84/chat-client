@@ -1,0 +1,410 @@
+/*
+========================
+Global Variables
+========================
+*/
+:root{
+    --bg-color: #f1f5f8;
+    --bg-color-2: rgb(33, 37, 41);
+    --bg-color-3: #fff;
+    --text-color-1:  #324d67;/*#4a5562;*/
+    --text-color-2: rgb(33, 37, 41);
+    --box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    
+}
+.dark-mode{
+    --bg-color: rgb(33, 37, 41);;
+    --bg-color-3: #0b212d;/*rgb(33, 37, 41);*/
+    --text-color-2: #fff;
+}
+
+
+/*
+=========================
+Global Styles
+=========================
+*/
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--bg-color);
+    transition: all 0.4s ease-in-out;
+    /*background-image: url('../images/bg-img3.jpg');*/
+}
+ul,li{
+    list-style: none;
+    text-transform: capitalize;
+}
+a{
+    text-decoration: none;
+}
+.user-avatar, .user-avatar-alt, .user-profile-img{
+    width: 40px;
+    height: 40px;
+}
+.online-status{
+    width: 3rem;
+    font-size : 0.8rem;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/*
+===================
+Form Alert
+===================
+*/
+.form-alert{
+    position: absolute;
+    z-index: 22;
+}
+/*
+=====================
+Navbar
+=====================
+*/
+.navbar-left{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.navbar-left .chat-logo{
+    padding-right: 1rem;
+}
+.navbar-left .nav-links{
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    gap: 0.5rem;
+}
+.navbar-left .nav-links a{
+    color: var(--bg-color-2);
+}
+.navbar-left .nav-links a.active{
+    color: #fff;
+}
+.navbar-right{
+    cursor: pointer;
+}
+.user-dropdown-menu{
+    background-color: var(--bg-color-3);
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    width: 150px;
+    display: block;
+    z-index: 20;
+    transition: all 0.4s ease-in-out;
+    animation: dropdown-menu 0.4s ease-in-out;
+}
+.user-dropdown-menu .user-menu-item{
+    padding: 0.5rem 0;
+    cursor: pointer;
+    text-align: center;
+}
+.user-dropdown-menu .user-menu-item:hover{
+    background-color: #f2f2f2;
+    
+}    
+.user-dropdown-menu .user-menu-item .user-menu-link{   
+    color: var(--text-color-2);
+}
+.user-dropdown-menu .user-menu-item:hover .user-menu-link{
+    color: var(--bg-color-2);
+} 
+/*
+===========================
+Chat Login
+===========================
+*/
+.chat-login, .chat-register, .verify-user, .reset-password, .profile-body{
+    background-color: var(--bg-color-3);
+    color: var(--text-color-2);
+}
+/*
+=======================
+Conversation Section
+=======================
+*/
+.conversation-list{
+    background-color: var(--bg-color-3);
+    height: 90vh;
+    max-height: 90%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-bottom: 1rem;
+}
+.conversation{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color-2);
+}
+.conversation-item:hover{
+    background-color: #f2f2f2;
+}
+.conversation-item:hover .conversation{
+    color: var(--bg-color-2);
+}
+
+
+/*
+=======================
+Contact Section
+=======================
+*/
+.contact-list{
+    background-color: var(--bg-color-3);
+    height: 90vh;
+    max-height: 90%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-bottom: 1rem;
+}
+.contact{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color-2);
+}
+.contact-item:hover{
+    background-color: #f2f2f2;
+}
+.contact-item:hover .contact{
+    color: var(--bg-color-2);
+}
+/*
+==========================
+Message Section
+==========================
+*/
+.message-list{
+    /*position: relative;*/
+    max-width: 800px;
+    position: relative;
+}
+.message-list .message-body{
+    background-color: var(--bg-color-3);
+    color: var(--text-color-2);
+    color: var(--);
+    height: 70vh;
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-scrollbar-width: thin;
+    -moz-scrollbar-width: thin;
+    -ms-scrollbar-width: thin;
+    -o-scrollbar-width: thin;
+    scrollbar-width: thin;
+    padding: 0 0.5rem;
+    /*background: url('../images/bg-img2.jpg') no-repeat;
+    background-size: cover;/*cover;contain; 100% 100%;
+    background-position: center; /*center center;*/
+}
+        
+.message-list .message-body .emoji-container{
+    width: 350px;
+    position: absolute;
+    left: 0;
+    top: 5.3rem;
+    z-index: 2;
+        
+}
+.message-list .message-footer{
+    background-color: var(--bg-color-3);
+    width: 100%;
+    display: flex;
+    gap: 0.2rem;
+    align-items: flex-end;
+    padding: 0.5rem;
+}
+.message-list .message-footer  .message-icon{
+    color: darkorange;
+    cursor: pointer;
+}
+.message-list .message-footer .text-box{
+    /*resize: none;*/
+    border-radius: 20px;
+    height: 20px;
+}
+
+.user-message-container{
+    display: flex;
+    padding: 0.5rem 0;
+    flex-direction: column;
+}
+.user-message-container.own-message{
+    align-items: flex-end;
+}
+.user-message-container.own-message .user-message-info{
+    flex-direction: row-reverse;
+}
+
+.user-message-container .user-message-info{
+    display: flex;
+    gap: 0.5rem;
+}
+.user-message-container .user-message-info .message-sent{
+    /*border-radius: 10px;*/
+     max-width: 300px;
+}
+ 
+
+/*
+===========================
+Settings Section
+===========================
+*/
+.settings-container-body{
+    background-color: var(--bg-color-3);
+    color: var(--text-color-2);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    max-height: 80vh;
+}
+.settings-wallpaper-body{
+    background-color: var(--bg-color-3);
+    color: var(--text-color-2);
+    height: 50vh;
+    /*background: url('../images/bg-img2.jpg') no-repeat;*/
+    background-size: 100% 100%;
+    background-position: center;
+    /*background-attachment: fixed;*/
+}
+.settings-wallpaper-body .receiver-message-container{
+    display: flex;
+    flex-direction: column;
+}
+.settings-wallpaper-body .receiver-message-container .message-left{
+    display: flex;
+}
+.settings-wallpaper-body .receiver-message-container .message-left .receiver-message{
+    width: 300px;
+    height: 50px;
+    border-radius: 15px;
+}
+   
+.settings-wallpaper-body .sender-message-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.sender-message-container .message-right{
+    display: flex;
+}
+.settings-wallpaper-body .sender-message-container .message-right .sender-message{
+    width: 300px;
+    height: 50px;
+    border-radius: 15px;
+}
+.settings-wallpaper-footer{
+    background-color: var(--bg-color-3);
+    
+}      
+.settings-wallpaper-footer .settings-message-footer{
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+.settings-wallpaper-footer .settings-message-footer .text-box{
+    height: 2rem;
+}
+        
+.dark-mode-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dark-mode-container .switch-button-container{
+    position: relative;
+    width: 2.5rem;
+    height: 1.3rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    display: inline-flex;
+    transition: all 0.4s ease;
+}
+.dark-mode-container .switch-button-container.active .toggle-btn{
+    background-color: #0d6efd;
+    left: 50%;
+}
+        
+.dark-mode-container .switch-button-container .toggle-btn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--text-color-1);
+    border-radius: 50%;
+    height: 100%;
+    width: 50%;
+    transition: all 0.4s ease;
+}
+    
+
+/*
+============================
+Profile
+============================
+*/
+.profile-img-container{
+    position: relative;
+}
+.profile-img-container .profile-img-label{
+   cursor: pointer;
+}
+
+/*
+====================
+Footer
+====================
+*/
+.footer{
+    width: 100%;
+    text-align: center;
+    background-color: #0b212d;
+}
+/*
+====================
+@Keyframes
+====================
+*/
+@keyframes dropdown-menu{
+    from {
+        top: 6rem;
+    }
+    to{
+        top: 4rem;
+    }
+}
+
+/*
+====================
+Media Queries
+====================
+*/
+@media screen and (max-width: 450px){
+    .user-message-info .message-avatar{
+        display: none;
+    }
+    
+}
+/** Hide chat image from 700 and below */
+@media screen and (max-width: 768px){
+    /** Hide chat image */
+    .chat-img{
+        display: none;
+    }
+}
+
