@@ -1,5 +1,5 @@
 # About The Chat App
-This is a one to one real-time chat app, built with the MERN stack. Socket.io library was used to handle to the real-time part of the application. To view this app, please visit https://www.olajekschat.onrender.com
+This is a one to one real-time chat app, built with the MERN stack. Socket.io library was used to handle to the real-time part of the application. To view this app, please visit https://olajekschat.onrender.com
 
 # Getting Started with Create React App
 
