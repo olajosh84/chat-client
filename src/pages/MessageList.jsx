@@ -13,6 +13,7 @@ import axios from "axios";
 
 const MessageList = ({socket}) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isSending, setIsSending] = useState(false);
     const [showEmoji, setShowEmoji] = useState(false);
     const { user, SERVER_URI, isDarkMode, wallpaper } = useGlobalContext();
     const [receiver, setReceiver] = useState(null);
@@ -37,6 +38,7 @@ const MessageList = ({socket}) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSending(true);
         let newId = "";
         const convoData = {senderId: user.userId, receiverId}
         if(!conversationId){
@@ -70,6 +72,7 @@ const MessageList = ({socket}) => {
         /**send message to socket server*/
         socket.emit("sendMessage", {conversationId, senderId: user?.userId, receiverId, text});
         setText("");
+        setIsSending(false);
     }
     /**get arrival message*/
     useEffect(() => {
@@ -244,10 +247,11 @@ const MessageList = ({socket}) => {
                 </div>
                 <div className="card-footer message-footer">
                     <span className="message-icon" onClick={() => setShowEmoji(prevState => !prevState)}><i className={`fa ${showEmoji ? 'fa-solid fa-keyboard' : 'fa fa-smile' }`}></i></span>
-                    <textarea name="text" value={text} onChange={(e) => setText(e.target.value)} className="form-control text-box" placeholder="Enter message..." />
+                    <textarea name="text" value={text} onClick={() => setShowEmoji(false)} onChange={(e) => setText(e.target.value)} className="form-control text-box" placeholder="Enter message..." />
                     {messageError && <small className="text-danger">{messageError}</small>}
-                    <button className="btn btn-sm btn-outline-primary" title="Send message" onClick={handleSubmit}>
-                        <span className="send-message-icon"><i className="fa-solid fa-paper-plane"></i></span>
+                    <button className="btn btn-sm btn-outline-primary" title="Send message" onClick={handleSubmit} disabled={isSending ? 'disabled' : ''}>
+                        {isSending && <span className="spinner-border spinner-border-sm"></span>}
+                        {!isSending && <span className="send-message-icon"><i className="fa-solid fa-paper-plane"></i></span>}
                     </button>
                 </div>
            </div>

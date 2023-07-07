@@ -95,7 +95,7 @@ const ContactList = ({onlineUsers}) => {
                             <h4 className={`px-4 mb-4 ${isDarkMode ? 'text-white' : 'text-dark' }`}>{`Hi, ${user?.username}`}</h4>
                             <form>
                                 <div className="input-group px-4 mb-4">
-                                    <input type="text" className="form-control" name="search" value={search} onChange={handleSearch} placeholder="Search Contact" />
+                                    <input type="text" className="form-control" name="search" value={search} onChange={handleSearch} placeholder="Search Contact" autoComplete="off" />
                                     <button className="btn btn-sm btn-outline-primary" onClick={(e) => e.preventDefault()}>
                                         <span>
                                             {searchIcons.search && <i className="fa-solid fa-search"></i>}
@@ -112,7 +112,7 @@ const ContactList = ({onlineUsers}) => {
                                 })
                             }
                             {
-                                filteredContacts.length < 1 && <p className={`px-4 ${isDarkMode ? 'text-white' : ''}`}>No record found</p>
+                                filteredContacts.length < 1 && !isLoading &&  <p className={`px-4 ${isDarkMode ? 'text-white' : ''}`}>No record found</p>
                             }
                         </div>
                     </div>

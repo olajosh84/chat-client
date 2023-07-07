@@ -47,7 +47,7 @@ const Conversation = ({conversations, userBgColor, onlineUsers}) => {
                 <Link to={`/chat/${receiver._id}`} className="conversation px-4">
                         {receiver?.profileImg && <img src={receiver?.profileImg} className="user-avatar rounded-pill" alt="" />}
                         {!receiver?.profileImg && <div className="user-avatar-alt rounded-pill text-white d-flex align-items-center justify-content-center" style={{background: `${userBgColor}`}}>
-                            { getInitials() }
+                            <strong>{ getInitials() }</strong>
                         </div>}
                         <div className="d-flex flex-column">
                             <span>{receiver?.firstName || receiver?.lastName ? receiver?.firstName +' '+ receiver?.lastName : receiver?.username}</span>

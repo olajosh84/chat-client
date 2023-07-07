@@ -37,9 +37,15 @@ const Profile = () => {
             const {data} = await axios.patch(`${SERVER_URI}/users/${user.userId}`, {firstName, lastName, profileImg});
             setShowSpinner(false);
             setAlert({show: true, icon: 'check', message: data.msg});
+            navigate(0)
         } catch (error) {
             setShowSpinner(false);
-            setAlert({show: true, icon: 'ban', message: error.response.data.msg});
+            if(error.response.data.msg){
+                setAlert({show: true, icon: 'ban', message: error.response.data.msg});
+            } else {
+                setAlert({show: true, icon: 'ban', message: "Something went wrong. File may be too large"});
+            }
+            
         }
 
     }

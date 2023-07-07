@@ -5,3 +5,4 @@ export { default as Contact } from "./Contact";
 export { default as Alert } from "./Alert";
 export {default as Footer} from "./Footer";
 export {default as Loading} from "./Loading";
+export {default as ScrollToTop} from "./ScrollToTop";

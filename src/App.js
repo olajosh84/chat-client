@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { NavBar, Footer } from "./components";
+import { NavBar, ScrollToTop } from "./components";
 import { 
   ConversationList, ContactList, MessageList, Register, Login, Logout, Profile, Settings, VerifyUser, ResetPassword, NotFound 
 } from "./pages";
@@ -48,7 +48,8 @@ const App = () => {
         <Route path="resetPassword/:userId" element={<ResetPassword />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {/*<Footer />*/}
+      <ScrollToTop />
     </>
   )
 }

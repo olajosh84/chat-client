@@ -14,7 +14,7 @@ const Contact = ({username, _id, firstName, lastName, profileImg, userBgColor, o
     return  <div className="contact-item">
                 <Link to={`/chat/${_id}`} className="contact px-4" >
                     {profileImg && <img src={profileImg} className="user-avatar rounded-pill" alt="" />}
-                    {!profileImg && <div className="user-avatar-alt rounded-pill text-white d-flex align-items-center justify-content-center" style={{background: `${userBgColor}`}}>{getInitials(firstName,lastName,username)}</div>}
+                    {!profileImg && <div className="user-avatar-alt rounded-pill text-white d-flex align-items-center justify-content-center" style={{background: `${userBgColor}`}}><strong>{getInitials(firstName,lastName,username)}</strong></div>}
                     <div className="d-flex flex-column">
                         <span>{firstName || lastName ? firstName +' '+lastName : username}</span>
                         {isOnline && <span className="online-status text-success">online</span>}

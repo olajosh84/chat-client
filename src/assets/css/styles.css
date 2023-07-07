@@ -54,7 +54,7 @@ a{
 section{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
 }
 /*
 ===================
@@ -62,7 +62,7 @@ Form Alert
 ===================
 */
 .form-alert{
-    position: absolute;
+    position: fixed;
     z-index: 22;
 }
 /*
@@ -395,7 +395,7 @@ Media Queries
 ====================
 */
 @media screen and (max-width: 450px){
-    .user-message-info .message-avatar{
+    .user-message-info .message-avatar, .message-left .user-avatar, .message-right .user-avatar{
         display: none;
     }
     
