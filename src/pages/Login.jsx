@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import chatImg from "../assets/images/chat.png";
-import { Alert } from "../components";
+import { Alert, Loading } from "../components";
 import { useGlobalContext } from "../context";
 import axios from "axios";
 
@@ -10,6 +10,7 @@ const Login = () => {
     const [ showSpinner, setShowSpinner ] = useState(false);
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
+    const [ isLoading, setIsLoading ] = useState(true);
     const navigate = useNavigate();
     
     const submitFormData = async (e) => {
@@ -38,14 +39,24 @@ const Login = () => {
     }
     //redirect to home page if already logged in
     useEffect(() => {
-       if(user.username){
+        setIsLoading(true);
+        if(user.username){
+            setIsLoading(false);
             const redirect = () => {
                 return navigate('/');
             }
             redirect()
-       }
+        }else{
+            return setIsLoading(false);
+        }
     },[user.username, navigate])
 
+    /**show loader while checking if user has logged in or not */
+    if(isLoading){
+        return  <section className="container mt-5 mb-3">
+                    <Loading text="Authenticating..." />
+                </section>
+    }
     return (
         <section className="container mt-5 mb-3">
             <div className="row">
