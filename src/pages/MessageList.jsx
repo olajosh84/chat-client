@@ -82,7 +82,7 @@ const MessageList = ({socket}) => {
     useEffect(() => {
         try {
             socket.on("getMessage", (data) => {
-                setArrivalMessage({conversationId: data.conversationId, senderId: data.senderId, text: data.text})
+                setArrivalMessage({conversationId: data?.conversationId, senderId: data?.senderId, text: data?.text})
             })
         } catch (error) {
             console.log(error)
