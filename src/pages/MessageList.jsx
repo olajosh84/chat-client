@@ -38,9 +38,13 @@ const MessageList = ({socket}) => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setShowEmoji(false);
         setIsSending(true);
         let newId = "";
         const convoData = {senderId: user.userId, receiverId}
+        /**if there's no active conversation between them, first save a conversation
+         * and then get the last conversation id and set the conversation id state to the new id
+         */
         if(!conversationId){
             try {
                 await axios.post(`${SERVER_URI}/conversations`, convoData);
