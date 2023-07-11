@@ -242,6 +242,8 @@ const MessageList = ({socket}) => {
                             autoFocusSearch={false}
                             emojiStyle={EmojiStyle.NATIVE}
                             theme={isDarkMode ? Theme.DARK : Theme.LIGHT}
+                            width={320}
+                            height={420}
                         /> 
                     </div>}
                 </div>

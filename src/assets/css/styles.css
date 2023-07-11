@@ -213,7 +213,7 @@ Message Section
 }
         
 .message-list .message-body .emoji-container{
-    width: 350px;
+    /*width: 350px;*/
     position: absolute;
     left: 0;
     top: 5.3rem;
