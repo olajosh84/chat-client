@@ -162,11 +162,9 @@ const MessageList = ({socket}) => {
     },[conversationId, SERVER_URI])
 
     /**
-     * scrolls the latest message into view automatically
-     * Also, update conversation document with the lastest message id;
+     * Update conversation document with the lastest message id;
      * */
     useEffect(() => {
-        messageRef.current?.scrollIntoView({behavior: "smooth"});
         const updateConversation = async () => {
             try {
                 await axios.patch(`${SERVER_URI}/conversations/updateConversation?conversationId=${conversationId}&messageId=${lastMessageId}`);
@@ -179,7 +177,12 @@ const MessageList = ({socket}) => {
             updateConversation();
         }
         
-    }, [messages, lastMessageId, conversationId, SERVER_URI])
+    }, [lastMessageId, conversationId, SERVER_URI])
+    
+    /* scrolls the latest message into view automatically */
+    useEffect(() => {
+        messageRef.current?.scrollIntoView({behavior: "smooth"});
+    }, [messages])
     //dismiss message error after 3 seconds
     useEffect(() => {
         const err = setTimeout(() => {
@@ -213,9 +216,9 @@ const MessageList = ({socket}) => {
                         </div>}
                     </div>
                     <div className={`card-footer message-footer ${isDarkMode ? 'text-bg-dark' : ''}`}>
-                        <span className="message-icon" onClick={() => setShowEmoji(prevState => !prevState)}><i className={`fa ${showEmoji ? 'fa-solid fa-keyboard' : 'fa fa-smile' }`}></i></span>
-                        <textarea name="text" value={text} onChange={(e) => setText(e.target.value)} className="form-control text-box" placeholder="Enter message..." />
-                        <button className="btn btn-sm btn-outline-primary" title="Send message" onClick={handleSubmit}>
+                        <span className="message-icon"><i className={`fa ${showEmoji ? 'fa-solid fa-keyboard' : 'fa fa-smile' }`}></i></span>
+                        <textarea name="text" className="form-control text-box" placeholder="Enter message..." />
+                        <button className="btn btn-sm btn-outline-primary" title="Send message">
                             <span className="send-message-icon"><i className="fa-solid fa-paper-plane"></i></span>
                         </button>
                     </div>

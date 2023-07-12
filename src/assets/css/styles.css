@@ -256,7 +256,7 @@ Message Section
 }
 .user-message-container .user-message-info .message-sent{
     /*border-radius: 10px;*/
-     max-width: 300px;
+     max-width: 280px;
 }
  
 
@@ -289,7 +289,7 @@ Settings Section
     display: flex;
 }
 .settings-wallpaper-body .receiver-message-container .message-left .receiver-message{
-    width: 300px;
+    width: 170px;
     height: 50px;
     border-radius: 15px;
 }
@@ -303,7 +303,7 @@ Settings Section
     display: flex;
 }
 .settings-wallpaper-body .sender-message-container .message-right .sender-message{
-    width: 300px;
+    width: 170px;
     height: 50px;
     border-radius: 15px;
 }
@@ -394,6 +394,11 @@ Footer
 Media Queries
 ====================
 */
+@media screen and (max-width: 360px){
+    .user-message-container .user-message-info .message-sent{
+        max-width: 220px;
+    }
+}
 @media screen and (max-width: 450px){
     .user-message-info .message-avatar, .message-left .user-avatar, .message-right .user-avatar{
         display: none;
