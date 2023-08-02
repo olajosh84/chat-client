@@ -10,7 +10,7 @@ const socket = socketio.connect(process.env.REACT_APP_SOCKET_SERVER_URI);
 
 const App = () => {
   //console.log(process.env.REACT_APP_SERVER_URI)
-  const { user, isDarkMode } = useGlobalContext();
+  const { user, isDarkMode, setShowUserMenu } = useGlobalContext();
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
@@ -31,6 +31,18 @@ const App = () => {
       })
     }
   },[user.userId])
+  
+  /** click on any part the body except user avatar makes drop down disappear */
+  useEffect(() => {
+    const removeDropdown = (e) => {
+      if(e.target.dataset.id !== "user-avatar"){
+        setShowUserMenu(false)
+      }
+    }
+    document.addEventListener("click", removeDropdown);
+    /**taking care side effects */
+    return () => document.removeEventListener("click", removeDropdown);
+  })
   return (
     <>
       <NavBar />  

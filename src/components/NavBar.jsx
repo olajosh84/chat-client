@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import avatar from "../assets/images/user.jpg";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useGlobalContext } from "../context";
 
 const Navbar = () => {
-    const { user, isDarkMode } = useGlobalContext();
-    const [ showUserMenu, setShowUserMenu ] = useState(false);
+    const { user, isDarkMode, showUserMenu, setShowUserMenu } = useGlobalContext();
     
     /*show/hide user dropdown menu*/
     const handleShowUserMenu = () => {
@@ -43,7 +42,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="navbar-right" onClick={handleShowUserMenu}>
-                        <img src={user?.profileImg || avatar} className="rounded-pill user-avatar" alt="User Avatar"/>
+                        <img src={user?.profileImg || avatar} data-id="user-avatar" className="rounded-pill user-avatar" alt="User Avatar"/>
                         {/*<button className="menu-icon">
                             <i className="fa-solid fa-bars"></i>
                         </button>*/}

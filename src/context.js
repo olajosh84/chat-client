@@ -13,7 +13,8 @@ const AppProvider = ({children}) => {
     const [ alert, setAlert ] = useState({show: false, icon: "", message: ""});
     const [ user, setUser ] = useState({username:"", userId: "", email: "", firstName: "", lastName: ""});
     const [wallpaper, setWallpaper] = useState(JSON.parse(localStorage.getItem('wallpaper')) || userWallpaper);
-   
+    const [ showUserMenu, setShowUserMenu ] = useState(false);
+    
     const hideAlert = () => {
         setAlert(prevAlert => {
             return {...prevAlert, show: false}
@@ -94,6 +95,7 @@ const AppProvider = ({children}) => {
             clearTimeout(hide);
         }
     },[alert])
+  
     return  <AppContext.Provider value=
                 {
                     {
@@ -109,7 +111,9 @@ const AppProvider = ({children}) => {
                         setIsDarkMode,
                         wallpaper,
                         setWallpaper,
-                        getInitials
+                        getInitials,
+                        showUserMenu,
+                        setShowUserMenu
                     }
                 }
             >
