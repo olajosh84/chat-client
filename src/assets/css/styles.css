@@ -78,6 +78,9 @@ Navbar
 .navbar-left .chat-logo{
     padding-right: 1rem;
 }
+.navbar-left .chat-logo img{
+    width: 6rem;
+}
 .navbar-left .nav-links{
     display: flex;
     align-items: center;

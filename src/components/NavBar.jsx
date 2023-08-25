@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import avatar from "../assets/images/user.jpg";
 import { useEffect } from "react";
 import { useGlobalContext } from "../context";
+import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
     const { user, isDarkMode, showUserMenu, setShowUserMenu } = useGlobalContext();
@@ -31,7 +32,9 @@ const Navbar = () => {
             <nav className={`navbar navbar-expand-sm sticky-top bg-gradient ${isDarkMode ? 'bg-success' : 'bg-primary'}`}>
                 <div className="container-fluid">
                     <div className="navbar-left">
-                        <div className="chat-logo">Olajeks</div>  
+                        <div className="chat-logo">
+                            <img src={logo} alt="" />
+                        </div>  
                         <div className="nav-links" >
                             <span>
                                 <Link to="/" className="chat-link active" >chat</Link>
